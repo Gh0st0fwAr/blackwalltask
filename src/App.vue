@@ -1,7 +1,6 @@
 <template lang="pug">
    .subsubwrappper
       mainApp
-      mainApp
 
 </template>
 
