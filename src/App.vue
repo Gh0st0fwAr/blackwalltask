@@ -8,7 +8,7 @@
 <script>
 export default {
    components: {
-      mainApp: () => import("./elements/mainapp.vue"),
+      mainApp: () => import("./scripts/mainapp.vue"),
    }
 }
 </script>
