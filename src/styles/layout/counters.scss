@@ -1,0 +1,33 @@
+.counters {
+   display: flex;
+   margin-bottom: 20px;
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+
+.counters__box {
+   padding: 10px 25px;
+   background-color: #1A1A1A;
+   color: white;
+   font-size: 18px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border-radius: 10px;
+   border: 2px solid #F58F20;
+   margin-right: 20px;
+   height: fit-content;
+
+   &:last-child {
+      margin-right: 0;
+   }
+}
+
+.counters__game {
+   font-size: 72px;
+   font-weight: bold;
+   margin-right: auto;
+   margin-left: 20px;
+}

@@ -1,0 +1,165 @@
+
+@import "../variables.scss";
+
+.gamebox {
+   position: relative;
+   width: $gamebox-width;
+   height: $gamebox-height;
+   border: 4px solid #F58F20;
+   background-color: #1A1A1A;
+   border-radius: 10px;
+   
+}
+
+.gamebox__area {
+   background-color: transparent;
+   // outline: 4px solid #F58F20;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   // width: 100%;
+   // height: 100%;
+   padding: $gamebox-padding;
+   flex-wrap: wrap;
+   overflow: hidden;
+   position: relative;
+}
+
+.gamebox__cell {
+   border-radius: 10px;
+   width: $gamebox-cell;
+   height: $gamebox-cell;
+   background: #F58F20;
+   margin-right: $cell-margin-right;
+   margin-bottom: $cell-margin-bottom;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;   
+   // box-shadow: 0px 4px 6px rgba(#FA8C2B, 0.45);
+   cursor: pointer;
+   z-index: 1;
+   overflow: hidden;
+   transition: 0.3s;   
+   color: #333333;
+   font-size: 44px;
+   font-weight: bold;
+
+   &:nth-child(#{$gamebox-size}n) {
+      margin-right: 0;
+   }
+
+   &:before {
+      position: absolute;
+      display: block;
+      content: "";
+      background: white;
+      z-index: 2;
+      width: 150%;
+      height: 0%;
+      bottom: 0;
+      opacity: 0.3;
+      border-radius: 50% 50% 0 0;    
+      transition: 0.5s;
+   }   
+
+}
+
+.gamebox__cell:hover::before {
+   height: 200%;
+   transition: 0.5s;
+}
+
+.gamebox__cell:hover {
+   color: white;
+}
+
+.shuffle {
+   font-size: 18px;
+   padding: 15px 27px;
+   background: transparent;
+   border-radius: 15px;
+   border: 2px solid #F58F20;
+   color: #F58F20;
+   margin-top: 40px;
+   transition: 0.3s;
+
+   &:hover {
+      background-color: black;
+      color: white;
+   }
+}
+
+.flip-cells-move {
+   transition: 0.4s;
+}
+
+.cellNull {
+   visibility: hidden;
+}
+
+.gamebox__message {
+   position: absolute;
+   background-color: white;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   z-index: 300;
+   transition: 0.3s;
+   visibility: hidden;
+   border-radius: 10px;
+}
+
+.gameboxMsgActive {
+   visibility: unset;
+   opacity: 0.95;
+   transition: opacity 0.3s;
+}
+
+.gamebox__title {
+   width: 80%;
+   text-align: center;
+}
+
+.gamebox__btnbox {
+   display: flex;
+   margin-top: 20px;
+
+}
+
+.btnbox__shuffle:hover {
+   border: 2px solid black;
+   color: black;
+}
+
+.exit {
+   margin-left: 20px;
+   font-size: 18px;
+   padding: 15px 27px;
+   background: transparent;
+   border-radius: 15px;
+   border: 2px solid #E74C3C;
+   color: #E74C3C;
+   margin-top: 40px;
+   transition: 0.3s;
+
+   &:hover {
+      border: 2px solid black;
+      color: black;
+   }
+}
+
+.btn:active {
+   outline: none;
+   transform: scale(0.95);
+}
+
+.btn:focus {
+   outline: none;
+}
