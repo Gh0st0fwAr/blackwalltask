@@ -13,12 +13,9 @@
 
 .gamebox__area {
    background-color: transparent;
-   // outline: 4px solid #F58F20;
    width: 100%;
    height: 100%;
    display: flex;
-   // width: 100%;
-   // height: 100%;
    padding: $gamebox-padding;
    flex-wrap: wrap;
    overflow: hidden;
@@ -36,7 +33,6 @@
    align-items: center;
    justify-content: center;
    position: relative;   
-   // box-shadow: 0px 4px 6px rgba(#FA8C2B, 0.45);
    cursor: pointer;
    z-index: 1;
    overflow: hidden;
