@@ -5,7 +5,7 @@
 
 ##  Чтобы развернуть проект необходимо:
 ```sh
-$ git clone git@github.com:Gh0st0fwAr/blackwalltask.git
+$ git clone https://github.com/Gh0st0fwAr/blackwalltask.git
 $ cd blackwalltask
 $ yarn
 ```
