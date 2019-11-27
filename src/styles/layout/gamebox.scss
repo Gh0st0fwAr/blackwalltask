@@ -116,6 +116,7 @@
    visibility: unset;
    opacity: 0.95;
    transition: opacity 0.3s;
+
 }
 
 .gamebox__title {
@@ -131,7 +132,7 @@
 
 .btnbox__shuffle:hover {
    border: 2px solid black;
-   color: black;
+   color: white;
 }
 
 .exit {
