@@ -1,7 +1,7 @@
 <template lang="pug">
    .subwrapper
       .counters
-         .counters__game 15
+         .counters__game {{cellsNum - 1}}
          .counters__box
             .counters__title Ходов
             .counters__turns {{turns}}
@@ -17,12 +17,6 @@
                v-bind:class="{cellNull: index===currentIndex}"
                tag="li"
             )
-            //- li.gamebox__cell(
-            //-    v-for="cell in cells" :cell="cell"
-            //-    :key="cell"
-            //-    @click="clickEvent"
-            //-    ref="cellId"
-            //- ) {{cell}}
          .gamebox__message(v-bind:class="{gameboxMsgActive: isWin}")
             .gamebox__title Вы выиграли! Нажмите "Перемешать", если хотите начать заново, или "Выход" если вас устраивает результат.
             .gamebox__btnbox
@@ -39,23 +33,26 @@ export default {
    },
    data() {
       return {
-         cells: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0],
+         cells: [],
+         rightArr: [],
          currentIndex: "",
          isWin: false,
          turns: 0,
          minutes: "00",
          seconds: String,
          isTime: false,
+         checkCells: [],
+         // Введите необходимое количество ячекк - 9, 16 или 25;
+         cellsNum: 16,
       }
    },
    watch: {
-      cells: function(val) {
-         const nullVal = this.cells.indexOf(0);
-         this.currentIndex = nullVal;
-         const rightArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
-         if (this.cells.toString() === rightArr.toString()) {
-               this.isWin = true;
-         } 
+      cells: {
+         immediate: false,
+         handler (newVal, oldVal) {
+            const nullVal = this.cells.indexOf(0);
+            this.currentIndex = nullVal;            
+         }
       },
       
    },
@@ -75,7 +72,16 @@ export default {
          const tc = this.cells;
          const ci = this.currentIndex;
          var clickedValCalc = tc[clickedVal];
-         if (tc[clickedVal-4] === 0 || tc[clickedVal+4] === 0 || tc[clickedVal+1] === 0 || tc[clickedVal-1] ===0) {
+         var cellsMath = 0;
+         if (this.cellsNum === 9) {
+            cellsMath = 3;
+         } else if (this.cellsNum === 16) {
+            cellsMath = 4;
+         } else if (this.cellsNum === 25) {
+            cellsMath = 5;
+         }
+         console.log(cellsMath);
+         if (tc[clickedVal-cellsMath] === 0 || tc[clickedVal+cellsMath] === 0 || tc[clickedVal+1] === 0 || tc[clickedVal-1] ===0) {
             if (this.isTime === false) {
             this.isTime = true;
             this.activateTimer();
@@ -83,7 +89,12 @@ export default {
             this.turns++;
             this.$set(tc, ci, clickedValCalc);
             this.$set(tc, clickedVal, 0);
-         }; 
+            const rightArr = this.rightArr;   
+            if (this.cells.toString() === rightArr.toString()) {
+            this.isWin = true;
+            } 
+         };
+         console.log(this.currentIndex);
          
       },
       exitBtn: function() {
@@ -123,7 +134,7 @@ export default {
                }
             }
             
-         }, 1)
+         }, 1000)
          
       }
    },
@@ -131,12 +142,20 @@ export default {
       const nullVal = this.cells.indexOf(0);
       this.currentIndex = nullVal;
       this.seconds = "00";
-      var arr = [];
-      // Ввести размер массива. (!)Пятнашки рассчитаны на поле с равным количеством строк и столбоцов(!)
-      for (var i=0; i<16; i++){
-         arr.push(i);
+      var cellsNum = this.cellsNum;
+      var rightArr = [];
+      for (var i=1; i<cellsNum; i++){
+         rightArr.push(i);
       }
-      console.log(arr);
+      rightArr.push(0);
+      this.rightArr = rightArr;
+
+      var cells = [];
+      for (var i=1; i<cellsNum; i++){
+         cells.push(i);
+      }
+      cells.push(0);
+      this.cells = cells;
    },
    
 }

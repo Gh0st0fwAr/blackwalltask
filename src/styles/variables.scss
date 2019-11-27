@@ -1,9 +1,10 @@
 // Размер поля исходя из количества шашек. Введите количество в соответствии с кодом.
 $gamebox-size: 4;
 $gamebox-cell: 100px;
+$gamebox-border: 4px;
 $gamebox-padding: calc(#{$gamebox-cell}/4);
 $gamebox-margin: calc((#{$gamebox-size} - 1) * #{$gamebox-padding});
-$gamebox-width: calc(#{$gamebox-size} * #{$gamebox-cell} + #{$gamebox-margin} + (2 * #{$gamebox-padding}) + 8px);
+$gamebox-width: calc(#{$gamebox-size} * #{$gamebox-cell} + #{$gamebox-margin} + (2 * #{$gamebox-padding}) + (2 * #{$gamebox-border}));
 $gamebox-height: $gamebox-width;
 $cell-margin-right: $gamebox-padding;
 $cell-margin-bottom: $gamebox-padding;

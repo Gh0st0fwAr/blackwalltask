@@ -5,7 +5,7 @@
    position: relative;
    width: $gamebox-width;
    height: $gamebox-height;
-   border: 4px solid #F58F20;
+   border: #{$gamebox-border} solid #F58F20;
    background-color: #1A1A1A;
    border-radius: 10px;
    
